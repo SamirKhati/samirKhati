@@ -17,16 +17,20 @@ a{
     left:0;
     top:0;
     width:100%;
+    box-sizing: border-box;
     padding:25px 9%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
+    overflow: hidden;
     visibility: hidden;
     opacity: 0;
     animation: show-content 1.5s linear forwards;
     animation-delay: 1.2s;
+    backdrop-filter: blur(50px);
 }
+
 @keyframes show-content{
     100%{
         visibility:visible;
@@ -60,6 +64,30 @@ a{
     color:#7cf03d;
 }
 
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10rem 9% 4rem;
+    background: #1f242d;
+    overflow: visible;
+    display: block; 
+    clear: both;
+}
+
+
+section.active{
+    animation: show-contents 1.5s linear forwards;
+    animation-delay: 1.6s;
+}
+
+@keyframes show-contents {
+    100%{
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+}
+}
 .home {
     display: flex;
     align-items: center;
@@ -224,6 +252,7 @@ display: block;
 width: 100%;
 object-fit: cover;
 
+
 }
 
 .bars-animation{
@@ -233,17 +262,602 @@ object-fit: cover;
     display: flex;
     z-index: -1;
 }
+
 .bars-animation .bar{
     width: 100%;
     height: 100%;
     background: #1f242d;
     transform: translateY(-100%);
-    animation: show-bars .5s ease-in-out forwards;
+    animation: hipe-bars .5s ease-in-out forwards;
     animation-delay:calc(.1s * var(--i));
 }
 
-@keyframes show-bars{
+@keyframes hipe-bars{
+
+
     100%{
-        transform: translateY(0%)
+        transform: translateY(0%);
     }
 }
+
+/* Update this part of your CSS */
+.bars-animation.active .bar {
+    animation: show-bars .5s ease-in-out forwards;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes show-bars {
+    0% {
+         transform: translateY(-100%); 
+        }
+    100% {
+         transform: translateY(0%); 
+        } /* Bars cover the screen */
+}
+
+@keyframes hide-bars {
+    0% { 
+        transform: translateY(0%); 
+    }
+    100% { 
+        transform: translateY(-100%);
+     } /* Bars reveal the screen */
+}
+
+.heading{
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+.heading span{
+    color: #7cf03d;
+}
+
+.services-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+    display: grid;
+    margin-top: 2rem;
+    align-items: start;
+}
+.services-box{
+    background: #2b313c;
+    padding: 30px;
+    border-radius: 1rem;
+    transition: .3s ease;
+    border: .2rem solid #2b313c;
+    margin-top: 10px;
+
+}
+
+.services-box:hover{
+    transform: translateY(-8px);
+    border: 1px solid #7cf03d;
+}
+.services-box h3,p{
+    color:#fff;
+}
+
+.services-box p{
+    font: 1.6rem;
+}
+.icon{
+    color:#fff;
+    font-size: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon a{
+    display: inline-flex;
+    background: #fff;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.icon a i{
+    font-size: 3rem;
+    color: black;
+    transform: rotate(225deg);
+    transition: .5s;
+}
+
+.services-box h3{
+    font-size: 2rem;
+    margin: .5rem;
+}
+.services-box:hover .icon :not(a i){
+    color: #7cf03d;
+
+}
+
+.resume-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+}
+
+.resume-container h2{
+    color: #fff;
+}
+
+.resume-box h2{
+    font-size: 3rem;
+}
+
+.resume-box p{
+    font-size: 1.3rem;
+}
+
+.desc{
+    margin: 2rem 0 2.5rem;
+}
+
+.resume-btn{
+    width: 100%;
+    height: 4.5rem;
+    background: #323946;
+    border: .2rem solid var #323946;
+    font-size: 1.6rem;
+    color:#fff;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border-radius: .8rem;
+    cursor: pointer;
+}
+.resume-btn.active{
+    border-color: #7cf03d;
+    color: #7cf03d;
+}
+
+.resume-detail {
+    display: none;
+}
+
+.resume-detail.active{
+    display:block;
+}
+
+.resume-detail h3{
+    color: #fff;
+    font-size: 1.5rem;
+}
+.resume-box .heading{
+    font-size: 3.5rem;
+    text-align: left;
+}
+
+.resume-list {
+    display: grid;
+    /* This ensures 2 columns side-by-side like the Lucius image */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem;
+    max-height: 500px; 
+    overflow-y: auto;
+    padding-right: 15px; /* Space for the scrollbar */
+}
+
+.resume-list::-webkit-scrollbar{
+    width:.7rem;
+}
+
+.resume-list::-webkit-scrollbar-thumb{
+    background: transparent;
+    border-radius: 1rem;
+}
+
+.resume-list:hover::-webkit-scrollbar-thumb{
+background:#7cf03d;
+}
+
+/*for resume section*/
+.resume-items {
+    background: #2b313c;
+    padding: 50px;
+    border-radius: 20px;
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.resume-items p{
+  font-size: 1rem;
+}
+
+.resume-items h3{
+    font-size: 1.2rem;
+}
+.resume-items .year{
+    color:#7cf03d;
+   
+}
+
+ .company{
+    position: relative;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.company::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: .5rem;
+    background: #7cf03d;
+    border-radius: 50%;
+    margin-left: -2rem;
+}
+
+.resume-items i{
+    color:#fff;
+}
+
+/* Target the grid container specifically for skills */
+.resume-detail.skill .resume-list {
+    display: grid;
+    /* This creates the grid layout. Adjust 150px to fit 4 columns like the image */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1rem;
+    height: 8%;
+    overflow: visible;
+}
+
+/* Fix the individual skill boxes */
+.resume-detail.skill .resume-items {
+    background: #2b313c;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    min-height: 120px; 
+    text-align: center;
+}
+
+/* Hover effect */
+.resume-detail.skill .resume-items:hover {
+    background: #1f242d;
+    border: 1px solid #7cf03d;
+    transform: translateY(-5px);
+}
+
+/* Style the icons inside the skill boxes */
+.resume-detail.skill .resume-items i {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 10px;
+    transition: 0.4s;
+}
+
+.resume-detail.skill .resume-items:hover i {
+    color: #7cf03d;
+}
+
+.resume-detail.skill .resume-items span {
+color: #1f242d;
+position: absolute;
+top: -20%;
+background-color: #fff;
+font-size: 1.6rem;
+padding: .5rem 1rem;
+border-radius: .6rem;
+pointer-events: none;
+opacity: 0;
+transform: scale(.9);
+transition: .2s;
+}
+
+.resume-detail.skill .resume-items:hover span{
+    top: -25%;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.resume-detail.about .resume-list{
+    height:auto;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+.resume-detail.about .resume-item{
+    height: auto;
+    padding: 0 0 .5rem;
+    background: transparent;
+    display: flex;
+   
+    
+}
+
+.resume-item p{
+    color: #7cf03d; /* Green for labels (Name, Age, etc.) */
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.resume-item p span{
+    color: #fff; /* White for values */
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+.portfolio-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.portfolio-details{
+    display: none;
+
+}
+
+.portfolio-details.active{
+    display: block;
+}
+
+.portfolio-box .numb{
+    font-size: 6rem;
+    -webkit-text-stroke: .07rem #fff;
+    color: transparent;
+    line-height: 1;
+}
+
+.portfolio-box h3{
+    color:#fff;
+    font-size: 3.5rem;
+    margin: 1rem 0 2rem;
+}
+
+.portfolio-box p{
+    font-size: 1.6rem;
+
+}
+
+.portfolio-box .tech p{
+    margin: 2rem 0;
+    color:#7cf03d;
+    border-bottom: .1rem solid #fff;
+    padding-bottom: 2rem;
+}
+
+.portfolio-box .live-github a{
+    position:relative;
+    display: inline-flex;
+    padding: 1.3rem;
+    font-size: 1.6rem;
+    color:#fff;
+    border-radius:50%;
+    background: #323946;
+    transition: .5s;
+}
+
+.portfolio-box .live-github a:hover{
+    color:#7cf03d;
+
+}
+
+.portfolio-box .live-github a:first-child{
+    margin-right: 1.5rem;
+}
+
+.portfolio-box .live-github a:first-child i{
+    transform: rotate(135deg);
+}
+
+.portfolio-box .live-github a span{
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .8rem;
+    white-space: nowrap;
+    padding: .5rem 1rem;
+    border-radius: .6rem;
+    pointer-events: none;
+    background:#fff;
+    color:#1f242d;
+    opacity: 0;
+    scale: .9;
+    transition: .2s;
+}
+
+.portfolio-box .live-github a:hover span{
+    top:-70%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.portfolio-box .portfolio-carousel{
+    width: 100%;
+    height: 45rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.portfolio-carousel{
+    overflow: hidden;
+    width: 100%;
+}
+
+.portfolio-carousel .img-slide{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 2rem;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.portfolio-carousel .img-item{
+    min-width: 100%; /* Ensures each image takes up the full container width */
+    height: 50%;
+}
+
+.portfolio-carousel .img-item img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+
+}
+
+.portfolio-box .navigation{
+    text-align: right;
+    margin-top: -20rem; /* Reduced gap from -8rem */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.portfolio-box .navigation button{
+    display: inline-flex;
+    padding: .4rem;
+    background:  #323946;
+    border: .2rem solid #7cf03d;
+    border-radius: .6rem;
+    font-size: 4rem;
+    color:#7cf03d;
+    cursor: pointer;
+}
+
+.portfolio-box .navigation .arrow-right{
+    margin-left: 0;
+    
+}
+
+.portfolio-box .navigation .disabled{
+    border-color:#323946;
+    color:#fff3;
+}
+
+.contact-box h2,i{
+    color:#fff;
+    font-size: 2rem;
+}
+
+.contact-container .contact-box .desc{
+    margin-bottom: 1rem;
+}
+/* Container splits the section into two main columns (Info vs Form) */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem;
+    align-items: start;
+}
+
+/* This targets the left side wrapper to stack children vertically */
+.contact-box:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Individual detail row */
+.contact-box .contact-details {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    margin: .7rem 0;
+    width: 100%;
+}
+
+/* Icon Box styling */
+.contact-details i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #323946;
+    color: #7cf03d;
+    font-size: 2rem;
+    min-width: 4.5rem; /* Ensures consistent width */
+    height: 4.5rem;
+    border-radius: .6rem;
+    margin-right: 1.5rem;
+    padding: 1.2rem;
+}
+
+/* Text inside the detail row */
+.contact-box .detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-box .detail p {
+    color: #7cf03d; /* Green label */
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+
+.contact-box .detail p:first-child{
+    color:#7cf03d;
+}
+.contact-box form{
+    background: #323946;
+    padding: 2.5rem 3.5rem 3.5rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.contact-box .heading{
+    font-size: 3.5rem;
+}
+
+.contact-box .field-box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.contact-box .field-box input,
+.contact-box .field-box textarea{
+    padding: 1rem;
+    background: #1f242d;
+    border: .18rem solid #1f242d;
+    border-radius: .9rem;
+    font-size: 1.6rem;
+    color:#fff;
+}
+
+.contact-box .field-box textarea{
+    grid-column: 1 / -1;
+    height: 8rem;
+    resize: none;
+}
+
+.contact-box .field-box input:focus,
+.contact-box .field-box textarea:focus{
+    border-color: #7cf03d;
+}
+
+.contact-box .btn{
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+/* Scroll Reveal Animation */
+.services-box,
+.resume-detail,
+.portfolio-details,
+.contact-content,
+.heading {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.services-box.reveal,
+.resume-detail.reveal,
+.portfolio-details.reveal,
+.contact-content.reveal,
+.heading.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
