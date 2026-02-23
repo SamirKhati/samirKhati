@@ -861,3 +861,105 @@ transition: .2s;
     transform: translateY(0);
 }
 
+/*for 9:16 ratio*/
+@media (max-width: 768px) {
+    /* Navbar adjustments */
+    .navbar {
+        padding: 20px 5%;
+    }
+    .navbar ul li {
+        margin-left: 20px;
+    }
+    .navbar ul li a {
+        font-size: 16px;
+    }
+    .navbar .logo {
+        font-size: 25px;
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 80px;
+        text-align: center;
+    }
+    .home-info h1 {
+        font-size: 35px;
+    }
+    .home-info h2 {
+        font-size: 22px;
+    }
+    .home-info p {
+        font-size: 14px;
+    }
+    .home-img .img-box {
+        width: 60vw;
+        height: 60vw;
+    }
+
+   
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .services-box {
+        padding: 20px;
+    }
+    .services-box h3 {
+        font-size: 1.8rem;
+    }
+    .services-box p {
+        font-size: 1.4rem;
+    }
+
+    .resume-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .resume-box h2,
+    .resume-box .heading {
+        font-size: 2.5rem;
+    }
+    .resume-btn {
+        font-size: 1.4rem;
+        height: 4rem;
+    }
+    .resume-list {
+        grid-template-columns: 1fr;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+    }
+    .resume-items {
+        padding: 30px;
+    }
+
+    
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-box .numb {
+        font-size: 4rem;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .contact-box h2,
+    .contact-box h3.heading {
+        font-size: 2rem;
+    }
+    .contact-box p.desc {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+    .home-info .btn-sci .sci a {
+        font-size: 18px;
+        padding: 6px;
+    }
+}
