@@ -743,7 +743,7 @@ transition: .2s;
 .contact-container .contact-box .desc{
     margin-bottom: 1rem;
 }
-/* Container splits the section into two main columns (Info vs Form) */
+
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr; 
@@ -751,14 +751,14 @@ transition: .2s;
     align-items: start;
 }
 
-/* This targets the left side wrapper to stack children vertically */
+
 .contact-box:first-child {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* Individual detail row */
+
 .contact-box .contact-details {
     display: flex;
     align-items: center;
@@ -767,7 +767,7 @@ transition: .2s;
     width: 100%;
 }
 
-/* Icon Box styling */
+
 .contact-details i {
     display: inline-flex;
     justify-content: center;
@@ -775,21 +775,21 @@ transition: .2s;
     background: #323946;
     color: #7cf03d;
     font-size: 2rem;
-    min-width: 4.5rem; /* Ensures consistent width */
+    min-width: 4.5rem; 
     height: 4.5rem;
     border-radius: .6rem;
     margin-right: 1.5rem;
     padding: 1.2rem;
 }
 
-/* Text inside the detail row */
+
 .contact-box .detail {
     display: flex;
     flex-direction: column;
 }
 
 .contact-box .detail p {
-    color: #7cf03d; /* Green label */
+    color: #7cf03d; 
     font-size: 1.3rem;
     margin: 0;
 }
@@ -798,36 +798,38 @@ transition: .2s;
 .contact-box .detail p:first-child{
     color:#7cf03d;
 }
+/* Contact Form Fix */
 .contact-box form{
+    width: 100%;
     background: #323946;
-    padding: 2.5rem 3.5rem 3.5rem;
+    padding: 2.5rem;
     border-radius: 2rem;
     text-align: center;
-}
-
-.contact-box .heading{
-    font-size: 3.5rem;
+    box-sizing: border-box;
 }
 
 .contact-box .field-box{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    width: 100%;
 }
 
 .contact-box .field-box input,
 .contact-box .field-box textarea{
+    width: 100%;
     padding: 1rem;
     background: #1f242d;
     border: .18rem solid #1f242d;
     border-radius: .9rem;
     font-size: 1.6rem;
     color:#fff;
+    box-sizing: border-box;
 }
 
 .contact-box .field-box textarea{
     grid-column: 1 / -1;
-    height: 8rem;
+    height: 12rem;
     resize: none;
 }
 
@@ -861,105 +863,144 @@ transition: .2s;
     transform: translateY(0);
 }
 
-/*for 9:16 ratio*/
+/* Mobile Responsive: max-width 768px */
 @media (max-width: 768px) {
+
     /* Navbar adjustments */
     .navbar {
-        padding: 20px 5%;
+        padding: 15px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        backdrop-filter: blur(40px);
     }
+
+    .navbar .logo {
+        font-size: 24px;
+        text-align: left;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+    }
+
     .navbar ul li {
-        margin-left: 20px;
+        margin-left: 0;
+        margin-bottom: 10px;
     }
+
     .navbar ul li a {
         font-size: 16px;
     }
-    .navbar .logo {
-        font-size: 25px;
-    }
 
+    /* Home section adjustments */
     .home {
         flex-direction: column;
-        gap: 30px;
-        padding-top: 80px;
+        gap: 20px;
+        padding-top: 70px;
         text-align: center;
     }
+
     .home-info h1 {
-        font-size: 35px;
+        font-size: 32px;
     }
+
     .home-info h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
+
     .home-info p {
         font-size: 14px;
     }
+
+    /* Image box */
     .home-img .img-box {
-        width: 60vw;
-        height: 60vw;
+        width: 70vw;
+        height: 70vw;
     }
 
-   
-    .services-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    /* Form container */
+    .contact-box form {
+        padding: 2rem 1.5rem 2rem;
     }
-    .services-box {
-        padding: 20px;
+
+    .contact-box .field-box {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
-    .services-box h3 {
-        font-size: 1.8rem;
-    }
-    .services-box p {
+
+    .contact-box .field-box input,
+    .contact-box .field-box textarea {
         font-size: 1.4rem;
+        padding: 0.8rem;
     }
 
+    .contact-box .field-box textarea {
+        height: 6rem;
+    }
+
+    .contact-box .btn {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 12px 0;
+    }
+
+    /* Contact container layout */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Adjust icons and contact info for smaller screens */
+    .contact-details i {
+        min-width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.6rem;
+        padding: 0.8rem;
+    }
+
+    .contact-box .detail p {
+        font-size: 1.2rem;
+    }
+
+    /* Resume section adjustments */
     .resume-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    .resume-box h2,
-    .resume-box .heading {
-        font-size: 2.5rem;
-    }
-    .resume-btn {
-        font-size: 1.4rem;
-        height: 4rem;
-    }
+
     .resume-list {
         grid-template-columns: 1fr;
         max-height: none;
         overflow: visible;
         padding-right: 0;
     }
+
     .resume-items {
-        padding: 30px;
+        padding: 20px;
     }
 
-    
-    .portfolio-container {
-        grid-template-columns: 1fr;
-    }
-    .portfolio-box .numb {
-        font-size: 4rem;
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .contact-box h2,
-    .contact-box h3.heading {
+    .resume-box h2,
+    .resume-box .heading {
         font-size: 2rem;
     }
-    .contact-box p.desc {
+
+    .resume-btn {
+        font-size: 1.4rem;
+        height: 3.8rem;
+    }
+
+    /* Buttons adjustments */
+    .btn {
+        padding: 8px 18px;
         font-size: 14px;
     }
 
-    .btn {
-        padding: 8px 20px;
-        font-size: 14px;
-    }
     .home-info .btn-sci .sci a {
-        font-size: 18px;
-        padding: 6px;
+        font-size: 16px;
+        padding: 5px;
     }
 }
